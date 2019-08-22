@@ -1,6 +1,8 @@
 package fr.polielio.project2;
 
 import org.bukkit.Bukkit;
+import org.bukkit.World;
+import org.bukkit.WorldType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -15,7 +17,8 @@ public class eventl implements Listener {
     public void upda(UpdateEvent e) {
         if (e.getType() == UpdateType.FAST) {
             for(Player p: Bukkit.getOnlinePlayers()){
-                if(p.getLocation().getBlockY()>200){
+                if(p.getLocation().getBlockY()>200 && (p.getLocation().getWorld().getEnvironment()==
+                World.Environment.NORMAL)){
                     p.addPotionEffect(new PotionEffect(PotionEffectType.BLINDNESS,120,1));
                 }
             }
